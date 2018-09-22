@@ -51,12 +51,17 @@
     <Reference Include="System.XML.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="IShootable.cs" />
     <Compile Include="thirdparty/**/*.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="MovingPlatform.cs" />
     <Compile Include="Player.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="defs/**" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

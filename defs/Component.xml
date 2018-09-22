@@ -1,0 +1,5 @@
+<Defs>
+  <ComponentDef defName="Bootstrap">
+    <type>Bootstrap</type>
+  </ComponentDef>
+</Defs>
