@@ -52,6 +52,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="ActorDef.cs" />
+    <Compile Include="Components.cs" />
+    <Compile Include="Dbg.cs" />
+    <Compile Include="Spawn.cs" />
+    <Compile Include="StaticReferences.cs" />
+    <Compile Include="Systems.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="IShootable.cs" />
     <Compile Include="thirdparty/**/*.cs" />

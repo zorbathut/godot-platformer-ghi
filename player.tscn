@@ -1,13 +1,12 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Player.cs" type="Script" id=1]
-[ext_resource path="res://robot_demo.png" type="Texture" id=2]
-[ext_resource path="res://sound_jump.wav" type="AudioStream" id=3]
-[ext_resource path="res://sound_shoot.wav" type="AudioStream" id=4]
-[ext_resource path="res://osb_left.png" type="Texture" id=5]
-[ext_resource path="res://osb_right.png" type="Texture" id=6]
-[ext_resource path="res://osb_jump.png" type="Texture" id=7]
-[ext_resource path="res://osb_fire.png" type="Texture" id=8]
+[ext_resource path="res://robot_demo.png" type="Texture" id=1]
+[ext_resource path="res://sound_jump.wav" type="AudioStream" id=2]
+[ext_resource path="res://sound_shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://osb_left.png" type="Texture" id=4]
+[ext_resource path="res://osb_right.png" type="Texture" id=5]
+[ext_resource path="res://osb_jump.png" type="Texture" id=6]
+[ext_resource path="res://osb_fire.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
 
@@ -204,10 +203,9 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 motion/sync_to_physics = false
-script = ExtResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 vframes = 2
 hframes = 16
 frame = 22
@@ -266,7 +264,7 @@ position = Vector2( 0.291992, -0.835023 )
 shape = SubResource( 11 )
 
 [node name="sound_jump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 2 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -277,7 +275,7 @@ bus = "Master"
 area_mask = 1
 
 [node name="sound_shoot" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -297,7 +295,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="left" type="TouchScreenButton" parent="ui"]
 position = Vector2( 27.7593, 360.87 )
 scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 5 )
+normal = ExtResource( 4 )
 pressed = null
 bitmask = null
 shape = null
@@ -310,7 +308,7 @@ visibility_mode = 1
 [node name="right" type="TouchScreenButton" parent="ui"]
 position = Vector2( 121.542, 361.415 )
 scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 6 )
+normal = ExtResource( 5 )
 pressed = null
 bitmask = null
 shape = null
@@ -323,7 +321,7 @@ visibility_mode = 1
 [node name="jump" type="TouchScreenButton" parent="ui"]
 position = Vector2( 666.224, 359.02 )
 scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 7 )
+normal = ExtResource( 6 )
 pressed = null
 bitmask = null
 shape = null
@@ -336,7 +334,7 @@ visibility_mode = 1
 [node name="fire" type="TouchScreenButton" parent="ui"]
 position = Vector2( 668.073, 262.788 )
 scale = Vector2( 1.49157, 1.46265 )
-normal = ExtResource( 8 )
+normal = ExtResource( 7 )
 pressed = null
 bitmask = null
 shape = null

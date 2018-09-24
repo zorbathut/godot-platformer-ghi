@@ -1,0 +1,88 @@
+<Defs>
+  <SystemDef defName="CollectorReset">
+    <type>Systems.CollectorReset</type>
+    <singleton>
+      <BulletImpactCollector>ReadWrite</BulletImpactCollector>
+    </singleton>
+  </SystemDef>
+
+  <SystemDef defName="PlatformMovement">
+    <type>Systems.PlatformMovement</type>
+    <iterate>
+      <Position>ReadWrite</Position>
+      <Platform>ReadWrite</Platform>
+    </iterate>
+  </SystemDef>
+
+  <SystemDef defName="PlayerMovement">
+    <type>Systems.PlayerMovement</type>
+    <iterate>
+      <Position>ReadWrite</Position>
+      <Player>ReadWrite</Player>
+    </iterate>
+    <full>
+      <Platform>ReadOnly</Platform>
+    </full>
+    <singleton>
+      <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
+    </singleton>
+  </SystemDef>
+
+  <SystemDef defName="MonsterMovement">
+    <type>Systems.MonsterMovement</type>
+    <iterate>
+      <Position>ReadWrite</Position>
+      <Monster>ReadWrite</Monster>
+    </iterate>
+    <full>
+      <Platform>ReadOnly</Platform>
+    </full>
+    <singleton>
+      <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
+    </singleton>
+  </SystemDef>
+
+  <SystemDef defName="BulletBehavior">
+    <type>Systems.BulletBehavior</type>
+    <iterate>
+      <Position>ReadWrite</Position>
+      <Monster>ReadWrite</Monster>
+    </iterate>
+    <singleton>
+      <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
+      <BulletImpactCollector>ReadWrite</BulletImpactCollector>
+    </singleton>
+  </SystemDef>
+
+  <SystemDef defName="MonsterDeath">
+    <type>Systems.MonsterDeath</type>
+    <iterate>
+      <Monster>ReadWrite</Monster>
+    </iterate>
+    <singleton>
+      <BulletImpactCollector>ReadOnly</BulletImpactCollector>
+    </singleton>
+  </SystemDef>
+
+  <SystemDef defName="CoinPickup">
+    <type>Systems.CoinPickup</type>
+    <iterate>
+      <Collectible>ReadWrite</Collectible>
+    </iterate>
+    <full>
+      <Player>ReadOnly</Player>
+    </full>
+  </SystemDef>
+
+  <ProcessDef defName="Tick">
+    <order>
+      <li>CollectorReset</li>
+      <li>PlatformMovement</li>
+      <li>PlayerMovement</li>
+      <li>MonsterMovement</li>
+      <li>BulletBehavior</li>
+      <li>MonsterDeath</li>
+      <li>CoinPickup</li>
+    </order>
+  </ProcessDef>
+</Defs>

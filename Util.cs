@@ -1,7 +1,8 @@
 ﻿using Godot;
 using System.Collections.Generic;
+using System.Linq;
 
-class Util
+static class Util
 {
     public static IEnumerable<string> GetFilesFromDir(string dirname)
     {
@@ -27,5 +28,34 @@ class Util
         var result = file.GetAsText();
         file.Close();
         return result;
+    }
+
+    public static IEnumerable<Node> GetNodes(this SceneTree sceneTree)
+    {
+        return sceneTree.GetRoot().GetAllChildren();
+    }
+
+    public static IEnumerable<Node> GetDirectChildren(this Node node)
+    {
+        return node.GetChildren().OfType<Node>();
+    }
+
+    public static IEnumerable<Node> GetAllChildren(this Node node)
+    {
+        yield return node;
+
+        foreach (var child in node.GetDirectChildren())
+        {
+            foreach (var result in child.GetAllChildren())
+            {
+                yield return result;
+            }
+        }
+    }
+
+    public static V TryGetValue<T, V>(this Dictionary<T, V> dict, T key)
+    {
+        dict.TryGetValue(key, out V holder);
+        return holder;
     }
 }

@@ -1,0 +1,50 @@
+<Defs>
+  <EntityDef defName="Platform">
+    <components>
+      <li>ActorDef</li>
+      <li>Position</li>
+      <li>Platform</li>
+      <li>GodotNode</li>
+    </components>
+  </EntityDef>
+
+  <EntityDef defName="Monster">
+    <components>
+      <li>ActorDef</li>
+      <li>Position</li>
+      <li>Monster</li>
+      <li>GodotNode</li>
+    </components>
+  </EntityDef>
+
+  <EntityDef defName="Player">
+    <components>
+      <li>ActorDef</li>
+      <li>Position</li>
+      <li>Player</li>
+      <li>GodotNode</li>
+    </components>
+  </EntityDef>
+  <ActorDef defName="Player">
+    <entityDef>Player</entityDef>
+    <scene>player</scene>
+  </ActorDef>
+
+  <EntityDef defName="Projectile">
+    <components>
+      <li>ActorDef</li>
+      <li>Position</li>
+      <li>Projectile</li>
+      <li>GodotNode</li>
+    </components>
+  </EntityDef>
+
+  <EntityDef defName="Collectible">
+    <components>
+      <li>ActorDef</li>
+      <li>Position</li>
+      <li>Collectible</li>
+      <li>GodotNode</li>
+    </components>
+  </EntityDef>
+</Defs>
