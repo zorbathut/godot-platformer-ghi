@@ -78,9 +78,16 @@ namespace Ghi
                 return;
             }
 
+            if (entity.active)
+            {
+                Dbg.Err($"Attempting to add an entity that is already active");
+                return;
+            }
+
             if (GlobalStatus == Status.Idle)
             {
                 Entities.Add(entity);
+                entity.active = true;
             }
             else
             {
@@ -96,9 +103,16 @@ namespace Ghi
                 return;
             }
 
+            if (!entity.active)
+            {
+                Dbg.Err($"Attempting to remove an entity that is already inactive");
+                return;
+            }
+
             if (GlobalStatus == Status.Idle)
             {
                 Entities.Remove(entity);
+                entity.active = false;
             }
             else
             {
@@ -226,7 +240,7 @@ namespace Ghi
                             bool valid = true;
                             for (int k = 0; k < requiredIndices.Length; ++k)
                             {
-                                if (entity.components[k] == null)
+                                if (entity.components[requiredIndices[k]] == null)
                                 {
                                     valid = false;
                                     break;
@@ -310,6 +324,9 @@ namespace Ghi
             PhaseEndActions.Clear();
 
             Singletons = null;
+
+            ActiveSystem = null;
+            ActiveEntity = null;
 
             GlobalStatus = Status.Uninitialized;
         }
