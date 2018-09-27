@@ -163,7 +163,6 @@ position = Vector2( 4236.75, 541.058 )
 position = Vector2( 4172.75, 541.058 )
 
 [node name="props" type="Node" parent="."]
-editor/display_folded = true
 
 [node name="moving_platform" parent="props" instance=ExtResource( 3 )]
 position = Vector2( 1451.86, 742.969 )
@@ -230,57 +229,44 @@ position = Vector2( 1039.29, 409.746 )
 
 [node name="player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 251.684, 1045.6 )
-motion/sync_to_physics = false
 
 [node name="enemies" type="Node" parent="."]
 editor/display_folded = true
 
 [node name="enemy 5" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 734.693, 1064.22 )
-motion/sync_to_physics = false
 
 [node name="enemy 6" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 707.665, 1225.05 )
-motion/sync_to_physics = false
 
 [node name="enemy 7" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 1125.21, 1053.06 )
-motion/sync_to_physics = false
 
 [node name="enemy 8" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 1292.11, 1059.24 )
-motion/sync_to_physics = false
 
 [node name="enemy 9" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 968.927, 766.466 )
-motion/sync_to_physics = false
 
 [node name="enemy 10" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 3080.34, 1807.61 )
-motion/sync_to_physics = false
 
 [node name="enemy 11" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 1457.6, 688.741 )
-motion/sync_to_physics = false
 
 [node name="enemy 12" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 1264.06, 571.713 )
-motion/sync_to_physics = false
 
 [node name="enemy 13" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 3590.85, 1114.86 )
-motion/sync_to_physics = false
 
 [node name="enemy 14" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 3546.2, 1356.19 )
-motion/sync_to_physics = false
 
 [node name="enemy 15" parent="enemies" instance=ExtResource( 6 )]
 position = Vector2( 2215.3, 1429.39 )
-motion/sync_to_physics = false
 
 [node name="parallax_bg" parent="." instance=ExtResource( 7 )]
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.0

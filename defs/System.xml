@@ -9,9 +9,12 @@
   <SystemDef defName="PlatformMovement">
     <type>Systems.PlatformMovement</type>
     <iterate>
-      <Position>ReadWrite</Position>
       <Platform>ReadWrite</Platform>
+      <GodotNode>ReadWrite</GodotNode>
     </iterate>
+    <singleton>
+      <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
+    </singleton>
   </SystemDef>
 
   <SystemDef defName="PlayerMovement">
@@ -19,6 +22,7 @@
     <iterate>
       <Position>ReadWrite</Position>
       <Player>ReadWrite</Player>
+      <GodotNode>ReadWrite</GodotNode>
     </iterate>
     <full>
       <Platform>ReadOnly</Platform>

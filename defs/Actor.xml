@@ -2,11 +2,14 @@
   <EntityDef defName="Platform">
     <components>
       <li>ActorDef</li>
-      <li>Position</li>
       <li>Platform</li>
       <li>GodotNode</li>
     </components>
   </EntityDef>
+  <ActorDef defName="Platform">
+    <entityDef>Platform</entityDef>
+    <scene>moving_platform</scene>
+  </ActorDef>
 
   <EntityDef defName="Monster">
     <components>
@@ -38,6 +41,10 @@
       <li>GodotNode</li>
     </components>
   </EntityDef>
+  <ActorDef defName="Bullet">
+    <entityDef>Projectile</entityDef>
+    <scene>bullet</scene>
+  </ActorDef>
 
   <EntityDef defName="Collectible">
     <components>

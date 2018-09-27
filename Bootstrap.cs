@@ -35,6 +35,8 @@ class Bootstrap : Node
             {
                 if (ActorDef.FindActorFromPath(node.Filename) is var actorDef && actorDef != null)
                 {
+                    Dbg.Inf($"Importing actor {actorDef} from node {node}");
+
                     Spawn.FromNode(node, actorDef);
                 }
             }
@@ -42,7 +44,6 @@ class Bootstrap : Node
             processed = true;
         }
 
-        Dbg.Inf($"proci {Ghi.Environment.Count}");
         Ghi.Environment.Process(ProcessDefs.Tick);
     }
 }

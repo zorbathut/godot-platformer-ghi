@@ -18,11 +18,18 @@ namespace Comp
     class GodotNode
     {
         public Node2D node;
+
+        public KinematicBody2D kinematicBody;
     }
 
     class Player
     {
-        public float phase;
+        public Vector2 linear_vel = Vector2.Zero;
+        public float onair_time = 0;
+        public bool on_floor = false;
+        public float shoot_time = 99999; //time since last shot
+
+        public string anim = "";
     }
 
     class Monster
@@ -32,7 +39,7 @@ namespace Comp
 
     class Platform
     {
-        public Vector2 velocity;
+        public float accum;
     }
 
     class Collectible

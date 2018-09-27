@@ -5,6 +5,7 @@
 
 [node name="moving_platform" type="Node2D"]
 script = ExtResource( 1 )
+_sections_unfolded = [ "Script" ]
 motion = Vector2( 0, 0 )
 cycle = 1.0
 

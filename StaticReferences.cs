@@ -11,3 +11,11 @@ public static class ProcessDefs
 
     public static Ghi.ProcessDef Tick;
 }
+
+[Def.StaticReferences]
+public static class ActorDefs
+{
+    static ActorDefs() { Def.StaticReferences.Initialized(); }
+
+    public static ActorDef Bullet;
+}

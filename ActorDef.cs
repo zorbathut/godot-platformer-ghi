@@ -1,7 +1,7 @@
 ﻿using Godot;
 using System.Collections.Generic;
 
-class ActorDef : Def.Def
+public class ActorDef : Def.Def
 {
     public Ghi.EntityDef entityDef;
     public string scene;
@@ -16,12 +16,20 @@ class ActorDef : Def.Def
         }
     }
 
-    private Resource resource;
+    public Node SceneInstance
+    {
+        get
+        {
+            return resource.Instance();
+        }
+    }
+
+    private PackedScene resource;
     private readonly static Dictionary<string, ActorDef> Lookup = new Dictionary<string, ActorDef>();
 
     public override IEnumerable<string> PostLoad()
     {
-        resource = ResourceLoader.Load(FullScenePath);
+        resource = ResourceLoader.Load(FullScenePath) as PackedScene;
         
         if (resource == null)
         {
