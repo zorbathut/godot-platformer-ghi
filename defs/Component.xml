@@ -4,14 +4,6 @@
     <immutable>true</immutable>
   </ComponentDef>
 
-  <ComponentDef defName="Position">
-    <type>Comp.Position</type>
-  </ComponentDef>
-
-  <ComponentDef defName="GodotNode">
-    <type>Comp.GodotNode</type>
-  </ComponentDef>
-
   <ComponentDef defName="Player">
     <type>Comp.Player</type>
   </ComponentDef>
@@ -20,16 +12,24 @@
     <type>Comp.Monster</type>
   </ComponentDef>
 
-  <ComponentDef defName="Platform">
-    <type>Comp.Platform</type>
-  </ComponentDef>
-
   <ComponentDef defName="Projectile">
     <type>Comp.Projectile</type>
   </ComponentDef>
 
   <ComponentDef defName="Collectible">
     <type>Comp.Collectible</type>
+  </ComponentDef>
+
+  <ComponentDef defName="GodotKinematicBody">
+    <type>Godot.KinematicBody2D</type>
+  </ComponentDef>
+
+  <ComponentDef defName="GodotRigidBody">
+    <type>Godot.RigidBody2D</type>
+  </ComponentDef>
+
+  <ComponentDef defName="GodotPlatform">
+    <type>Comp.Godot.Platform</type>
   </ComponentDef>
 
   <ComponentDef defName="GodotSceneSingleton">

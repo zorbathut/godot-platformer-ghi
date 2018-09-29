@@ -18,7 +18,7 @@ class Bootstrap : Node
         var parser = new Def.Parser();
         foreach (var fname in Util.GetFilesFromDir("res://defs"))
         {
-            parser.AddString(Util.GetFileAsString(fname));
+            parser.AddString(Util.GetFileAsString(fname), fname);
         }
         parser.Finish();
 

@@ -8,20 +8,6 @@ namespace Comp
         public global::ActorDef def;
     }
 
-    class Position
-    {
-        public Vector2 position;
-
-        public Ghi.Entity parent;
-    }
-
-    class GodotNode
-    {
-        public Node2D node;
-
-        public KinematicBody2D kinematicBody;
-    }
-
     class Player
     {
         public Vector2 linear_vel = Vector2.Zero;
@@ -35,11 +21,6 @@ namespace Comp
     class Monster
     {
 
-    }
-
-    class Platform
-    {
-        public float accum;
     }
 
     class Collectible

@@ -6,10 +6,10 @@ public class Coin : Area2D
 
     public void _OnCoinBodyEnter(PhysicsBody2D body)
     {
-        if (!taken && body is Player)
+        /*if (!taken && body is Player)
         {
             GetNode<AnimationPlayer>("anim").Play("taken");
             taken = true;
-        }
+        }*/
     }
 }

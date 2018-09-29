@@ -2,8 +2,7 @@
   <EntityDef defName="Platform">
     <components>
       <li>ActorDef</li>
-      <li>Platform</li>
-      <li>GodotNode</li>
+      <li>GodotPlatform</li>
     </components>
   </EntityDef>
   <ActorDef defName="Platform">
@@ -14,18 +13,15 @@
   <EntityDef defName="Monster">
     <components>
       <li>ActorDef</li>
-      <li>Position</li>
       <li>Monster</li>
-      <li>GodotNode</li>
     </components>
   </EntityDef>
 
   <EntityDef defName="Player">
     <components>
       <li>ActorDef</li>
-      <li>Position</li>
       <li>Player</li>
-      <li>GodotNode</li>
+      <li>GodotKinematicBody</li>
     </components>
   </EntityDef>
   <ActorDef defName="Player">
@@ -36,9 +32,8 @@
   <EntityDef defName="Projectile">
     <components>
       <li>ActorDef</li>
-      <li>Position</li>
       <li>Projectile</li>
-      <li>GodotNode</li>
+      <li>GodotRigidBody</li>
     </components>
   </EntityDef>
   <ActorDef defName="Bullet">
@@ -49,9 +44,8 @@
   <EntityDef defName="Collectible">
     <components>
       <li>ActorDef</li>
-      <li>Position</li>
       <li>Collectible</li>
-      <li>GodotNode</li>
+      <!--<li>GodotNode</li>-->
     </components>
   </EntityDef>
 </Defs>

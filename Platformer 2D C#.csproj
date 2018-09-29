@@ -55,6 +55,7 @@
     <Compile Include="ActorDef.cs" />
     <Compile Include="Components.cs" />
     <Compile Include="Dbg.cs" />
+    <Compile Include="NodeScripts\Platform.cs" />
     <Compile Include="Spawn.cs" />
     <Compile Include="StaticReferences.cs" />
     <Compile Include="Systems.cs" />
@@ -63,8 +64,6 @@
     <Compile Include="thirdparty/**/*.cs" />
     <Compile Include="Coin.cs" />
     <Compile Include="Enemy.cs" />
-    <Compile Include="MovingPlatform.cs" />
-    <Compile Include="Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="defs/**" />

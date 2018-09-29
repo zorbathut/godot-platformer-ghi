@@ -13,19 +13,17 @@ namespace Systems
 
     static class PlatformMovement
     {
-        public static void Execute(Comp.Platform platform, Comp.GodotNode godotNode)
+        public static void Execute(Comp.Godot.Platform node)
         {
             float delta = 1/60f;
 
-            var mp = godotNode.node as MovingPlatform;
-
-            platform.accum += delta * (1.0f / mp.cycle) * Mathf.Pi * 2;
-            platform.accum %= Mathf.Pi * 2;
-            var d = Mathf.Sin(platform.accum);
+            node.accum += delta * (1.0f / node.cycle) * Mathf.Pi * 2;
+            node.accum %= Mathf.Pi * 2;
+            var d = Mathf.Sin(node.accum);
             var xf = Transform2D.Identity;
-            xf[2] = mp.motion * d;
+            xf[2] = node.motion * d;
 
-            godotNode.node.GetNode<Node2D>("platform").Transform = xf;
+            node.GetNode<Node2D>("platform").Transform = xf;
         }
     }
 
@@ -40,7 +38,7 @@ namespace Systems
         const float BULLET_VELOCITY = 1000;
         const float SHOOT_TIME_SHOW_WEAPON = 0.2f;
 
-        public static void Execute(Comp.Player player, Comp.Position position, Comp.GodotNode godotNode)
+        public static void Execute(Comp.Player player, KinematicBody2D node)
         {
             float delta = 1/60f;
 
@@ -53,9 +51,9 @@ namespace Systems
 	        // Apply Gravity
 	        player.linear_vel += delta * GRAVITY_VEC;
 	        // Move and Slide
-	        player.linear_vel = godotNode.kinematicBody.MoveAndSlide(player.linear_vel, floorNormal: FLOOR_NORMAL);
+	        player.linear_vel = node.MoveAndSlide(player.linear_vel, floorNormal: FLOOR_NORMAL);
 	        // Detect Floor
-	        if (godotNode.kinematicBody.IsOnFloor())
+	        if (node.IsOnFloor())
                 player.onair_time = 0;
 
 	        player.on_floor = player.onair_time < MIN_ONAIR_TIME;
@@ -76,19 +74,19 @@ namespace Systems
 	        if (player.on_floor && Input.IsActionJustPressed("jump"))
             {
                 player.linear_vel.y = -JUMP_SPEED;
-		        godotNode.node.GetNode<AudioStreamPlayer2D>("sound_jump").Play();
+		        node.GetNode<AudioStreamPlayer2D>("sound_jump").Play();
             }
 
             // We'll need this for some stuff
-            var sprite = godotNode.node.GetNode<Sprite>("sprite");
+            var sprite = node.GetNode<Sprite>("sprite");
 
             // Shooting
 	        if (Input.IsActionJustPressed("shoot"))
             {
-                var bullet = Spawn.FromDef(ActorDefs.Bullet, godotNode.node.GetParent(), godotNode.node.GetNode<Node2D>("sprite/bullet_shoot").GlobalPosition);
-                (bullet.Component<Comp.GodotNode>().node as RigidBody2D).LinearVelocity = new Vector2(sprite.Scale.x * BULLET_VELOCITY, 0);
-                (bullet.Component<Comp.GodotNode>().node as RigidBody2D).AddCollisionExceptionWith(godotNode.node);
-		        godotNode.node.GetNode<AudioStreamPlayer2D>("sound_shoot").Play();
+                var bullet = Spawn.FromDef(ActorDefs.Bullet, node.GetParent(), node.GetNode<Node2D>("sprite/bullet_shoot").GlobalPosition);
+                bullet.Component<RigidBody2D>().LinearVelocity = new Vector2(sprite.Scale.x * BULLET_VELOCITY, 0);
+                bullet.Component<RigidBody2D>().AddCollisionExceptionWith(node);
+		        node.GetNode<AudioStreamPlayer2D>("sound_shoot").Play();
 		        player.shoot_time = 0;
             }
 		    
@@ -134,7 +132,7 @@ namespace Systems
 	        if (new_anim != player.anim)
             {
                 player.anim = new_anim;
-                godotNode.node.GetNode<AnimationPlayer>("anim").Play(player.anim);
+                node.GetNode<AnimationPlayer>("anim").Play(player.anim);
             }
         }
     }
