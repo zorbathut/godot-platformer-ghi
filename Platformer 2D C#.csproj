@@ -63,7 +63,6 @@
     <Compile Include="Util.cs" />
     <Compile Include="IShootable.cs" />
     <Compile Include="thirdparty/**/*.cs" />
-    <Compile Include="Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="defs/**" />

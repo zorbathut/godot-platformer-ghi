@@ -20,7 +20,17 @@ namespace Comp
 
     class Monster
     {
+        public enum State
+        {
+            Walking,
+            Killed,
+        }
 
+        public Vector2 linear_velocity = Vector2.Zero;
+        public int direction = -1;
+        public string anim = "";
+
+        public State state = State.Walking;
     }
 
     class Collectible

@@ -3,14 +3,6 @@ using System.Linq;
 
 namespace Systems
 {
-    static class CollectorReset
-    {
-        public static void Execute()
-        {
-
-        }
-    }
-
     static class PlatformMovement
     {
         public static void Execute(Comp.Godot.Platform node)
@@ -139,21 +131,46 @@ namespace Systems
 
     static class MonsterMovement
     {
-        public static void Execute()
-        {
+        static readonly Vector2 GRAVITY_VEC = new Vector2(0, 900);
+        static readonly Vector2 FLOOR_NORMAL = new Vector2(0, -1);
 
+        const float WALK_SPEED = 70;
+
+        public static void Execute(Comp.Monster monster, Godot.KinematicBody2D body)
+        {
+            float delta = 1/60f;
+            
+            var new_anim = "idle";
+
+	        if (monster.state == Comp.Monster.State.Walking)
+            {
+                monster.linear_velocity += GRAVITY_VEC * delta;
+		        monster.linear_velocity.x = monster.direction * WALK_SPEED;
+		        monster.linear_velocity = body.MoveAndSlide(monster.linear_velocity, FLOOR_NORMAL);
+
+		        if (!body.GetNode<RayCast2D>("detect_floor_left").IsColliding() || body.GetNode<RayCast2D>("detect_wall_left").IsColliding())
+			        monster.direction = 1;
+
+		        if (!body.GetNode<RayCast2D>("detect_floor_right").IsColliding() || body.GetNode<RayCast2D>("detect_wall_right").IsColliding())
+			        monster.direction = -1;
+
+		        body.GetNode<Sprite>("sprite").Scale = new Vector2(monster.direction, 1);
+		        new_anim = "walk";
+            }
+	        else
+            {
+                new_anim = "explode";
+            }
+
+	        if (monster.anim != new_anim)
+            {
+		        monster.anim = new_anim;
+		        body.GetNode<AnimationPlayer>("anim").Play(monster.anim);
+            }
         }
     }
 
     static class BulletBehavior
-    {
-        public static void Execute()
-        {
-
-        }
-    }
-
-    static class MonsterDeath
     {
         public static void Execute()
         {

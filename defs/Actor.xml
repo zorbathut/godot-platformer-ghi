@@ -14,8 +14,13 @@
     <components>
       <li>ActorDef</li>
       <li>Monster</li>
+      <li>GodotKinematicBody</li>
     </components>
   </EntityDef>
+  <ActorDef defName="Monster">
+    <entityDef>Monster</entityDef>
+    <scene>enemy</scene>
+  </ActorDef>
 
   <EntityDef defName="Player">
     <components>
