@@ -47,4 +47,9 @@ namespace Comp
     {
 
     }
+
+    class Global
+    {
+        public float delta;
+    }
 }

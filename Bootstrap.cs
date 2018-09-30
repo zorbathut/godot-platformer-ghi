@@ -25,9 +25,9 @@ class Bootstrap : Node
         Ghi.Environment.Startup();
     }
 
-    public override void _Process(float delta)
+    public override void _PhysicsProcess(float delta)
     {
-        base._Process(delta);
+        base._PhysicsProcess(delta);
 
         if (!processed)
         {
@@ -43,6 +43,8 @@ class Bootstrap : Node
 
             processed = true;
         }
+
+        Ghi.Environment.Singleton<Comp.Global>().delta = delta;
 
         Ghi.Environment.Process(ProcessDefs.Tick);
     }

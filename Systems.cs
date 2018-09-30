@@ -5,11 +5,9 @@ namespace Systems
 {
     static class PlatformMovement
     {
-        public static void Execute(Comp.Godot.Platform node)
+        public static void Execute(Comp.Godot.Platform node, Comp.Global global_ro)
         {
-            float delta = 1/60f;
-
-            node.accum += delta * (1.0f / node.cycle) * Mathf.Pi * 2;
+            node.accum += global_ro.delta * (1.0f / node.cycle) * Mathf.Pi * 2;
             node.accum %= Mathf.Pi * 2;
             var d = Mathf.Sin(node.accum);
             var xf = Transform2D.Identity;
@@ -30,18 +28,16 @@ namespace Systems
         const float BULLET_VELOCITY = 1000;
         const float SHOOT_TIME_SHOW_WEAPON = 0.2f;
 
-        public static void Execute(Comp.Player player, KinematicBody2D node)
+        public static void Execute(Comp.Player player, KinematicBody2D node, Comp.Global global_ro)
         {
-            float delta = 1/60f;
-
             // increment counters
-	        player.onair_time += delta;
-	        player.shoot_time += delta;        
+	        player.onair_time += global_ro.delta;
+	        player.shoot_time += global_ro.delta;        
 
             /// MOVEMENT ///
 
 	        // Apply Gravity
-	        player.linear_vel += delta * GRAVITY_VEC;
+	        player.linear_vel += global_ro.delta * GRAVITY_VEC;
 	        // Move and Slide
 	        player.linear_vel = node.MoveAndSlide(player.linear_vel, floorNormal: FLOOR_NORMAL);
 	        // Detect Floor
@@ -136,15 +132,13 @@ namespace Systems
 
         const float WALK_SPEED = 70;
 
-        public static void Execute(Comp.Monster monster, Godot.KinematicBody2D body)
+        public static void Execute(Comp.Monster monster, Godot.KinematicBody2D body, Comp.Global global_ro)
         {
-            float delta = 1/60f;
-            
             var new_anim = "idle";
 
 	        if (monster.state == Comp.Monster.State.Walking)
             {
-                monster.linear_velocity += GRAVITY_VEC * delta;
+                monster.linear_velocity += GRAVITY_VEC * global_ro.delta;
 		        monster.linear_velocity.x = monster.direction * WALK_SPEED;
 		        monster.linear_velocity = body.MoveAndSlide(monster.linear_velocity, FLOOR_NORMAL);
 

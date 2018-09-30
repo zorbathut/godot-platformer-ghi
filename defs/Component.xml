@@ -40,4 +40,10 @@
     <type>Comp.GodotSceneSingleton</type>
     <singleton>true</singleton>
   </ComponentDef>
+
+  <ComponentDef defName="Global">
+    <type>Global</type>
+    <singleton>true</singleton>
+    <immutable>true</immutable>
+  </ComponentDef>
 </Defs>
