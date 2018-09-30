@@ -58,4 +58,9 @@ static class Util
         dict.TryGetValue(key, out V holder);
         return holder;
     }
+
+    public static bool Collide(this CollisionShape2D lhs, CollisionShape2D rhs)
+    {
+        return lhs.GetShape().Collide(lhs.GlobalTransform, rhs.GetShape(), rhs.GlobalTransform);
+    }
 }

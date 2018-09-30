@@ -63,12 +63,15 @@
 
   <SystemDef defName="CoinPickup">
     <type>Systems.CoinPickup</type>
-    <iterate>
-      <Collectible>ReadWrite</Collectible>
-    </iterate>
     <full>
+      <GodotKinematicBody>ReadOnly</GodotKinematicBody>
+      <GodotArea>ReadWrite</GodotArea>
       <Player>ReadOnly</Player>
+      <Collectible>ReadOnly</Collectible>
     </full>
+    <singleton>
+      <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
+    </singleton>
   </SystemDef>
 
   <ProcessDef defName="Tick">
@@ -77,6 +80,7 @@
       <li>PlatformMovement</li>
       <li>PlayerMovement</li>
       <li>MonsterMovement</li>
+      <!-- We really want to run the physics sim right here -->
       <li>BulletBehavior</li>
       <li>MonsterDeath</li>
       <li>CoinPickup</li>

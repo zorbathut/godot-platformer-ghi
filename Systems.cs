@@ -1,5 +1,5 @@
 ﻿using Godot;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Systems
 {
@@ -165,7 +165,24 @@ namespace Systems
     {
         public static void Execute()
         {
+            var players = Ghi.Environment.List.Where(e => e.ComponentRO<Comp.Player>() != null).ToArray();
+            var coins = Ghi.Environment.List.Where(e => e.ComponentRO<Comp.Collectible>() != null).ToArray();
+                
+            foreach (var playerentity in players)
+            {
+                var playercollide = playerentity.ComponentRO<KinematicBody2D>().GetNode<CollisionShape2D>("collision");
 
+                foreach (var coinentity in coins)
+                {
+                    var coincollide = coinentity.ComponentRO<Area2D>().GetNode<CollisionShape2D>("collision");
+                    
+                    if (playercollide.Collide(coincollide))
+                    {
+                        coinentity.ComponentRO<Area2D>().GetNode<AnimationPlayer>("anim").Play("taken");
+                        Ghi.Environment.Remove(coinentity);
+                    }
+                }
+            }
         }
     }
 }

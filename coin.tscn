@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Coin.cs" type="Script" id=1]
-[ext_resource path="res://coin.png" type="Texture" id=2]
-[ext_resource path="res://sound_coin.wav" type="AudioStream" id=3]
-[ext_resource path="res://bullet.png" type="Texture" id=4]
+[ext_resource path="res://coin.png" type="Texture" id=1]
+[ext_resource path="res://sound_coin.wav" type="AudioStream" id=2]
+[ext_resource path="res://bullet.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -155,10 +154,10 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 1 )
+_sections_unfolded = [ "Script" ]
 
 [node name="sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+texture = ExtResource( 1 )
 hframes = 4
 
 [node name="anim" type="AnimationPlayer" parent="."]
@@ -173,9 +172,10 @@ blend_times = [  ]
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
+_sections_unfolded = [ "shape" ]
 
 [node name="sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 2 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -201,7 +201,7 @@ visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 65793
 process_material = SubResource( 6 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 normal_map = null
 h_frames = 1
 v_frames = 1
@@ -215,4 +215,3 @@ pause_animated_sprites = true
 process_parent = false
 physics_process_parent = false
 
-[connection signal="body_entered" from="." to="." method="_OnCoinBodyEnter"]

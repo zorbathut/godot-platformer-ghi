@@ -45,7 +45,11 @@
     <components>
       <li>ActorDef</li>
       <li>Collectible</li>
-      <!--<li>GodotNode</li>-->
+      <li>GodotArea</li>
     </components>
   </EntityDef>
+  <ActorDef defName="Coin">
+    <entityDef>Collectible</entityDef>
+    <scene>coin</scene>
+  </ActorDef>
 </Defs>

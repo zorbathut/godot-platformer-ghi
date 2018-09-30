@@ -28,6 +28,10 @@
     <type>Godot.RigidBody2D</type>
   </ComponentDef>
 
+  <ComponentDef defName="GodotArea">
+    <type>Godot.Area2D</type>
+  </ComponentDef>
+
   <ComponentDef defName="GodotPlatform">
     <type>Comp.Godot.Platform</type>
   </ComponentDef>

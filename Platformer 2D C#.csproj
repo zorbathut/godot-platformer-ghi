@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
     <Compile Include="ActorDef.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="Components.cs" />
     <Compile Include="Dbg.cs" />
     <Compile Include="NodeScripts\Platform.cs" />
@@ -62,7 +63,6 @@
     <Compile Include="Util.cs" />
     <Compile Include="IShootable.cs" />
     <Compile Include="thirdparty/**/*.cs" />
-    <Compile Include="Coin.cs" />
     <Compile Include="Enemy.cs" />
   </ItemGroup>
   <ItemGroup>
