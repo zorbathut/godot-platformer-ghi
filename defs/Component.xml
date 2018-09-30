@@ -40,9 +40,4 @@
     <type>Comp.GodotSceneSingleton</type>
     <singleton>true</singleton>
   </ComponentDef>
-
-  <ComponentDef defName="BulletImpactCollector">
-    <type>Comp.BulletImpactCollector</type>
-    <singleton>true</singleton>
-  </ComponentDef>
 </Defs>

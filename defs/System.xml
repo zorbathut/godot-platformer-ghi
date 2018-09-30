@@ -41,7 +41,6 @@
     </iterate>
     <singleton>
       <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
-      <BulletImpactCollector>ReadWrite</BulletImpactCollector>
     </singleton>
   </SystemDef>
 

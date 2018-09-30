@@ -47,9 +47,4 @@ namespace Comp
     {
 
     }
-
-    class BulletImpactCollector
-    {
-
-    }
 }
