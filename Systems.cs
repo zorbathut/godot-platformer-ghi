@@ -1,4 +1,5 @@
 ﻿using Godot;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Systems
@@ -72,8 +73,7 @@ namespace Systems
 	        if (Input.IsActionJustPressed("shoot"))
             {
                 var bullet = Spawn.FromDef(ActorDefs.Bullet, node.GetParent(), node.GetNode<Node2D>("sprite/bullet_shoot").GlobalPosition);
-                bullet.Component<RigidBody2D>().LinearVelocity = new Vector2(sprite.Scale.x * BULLET_VELOCITY, 0);
-                bullet.Component<RigidBody2D>().AddCollisionExceptionWith(node);
+                bullet.Component<Comp.Projectile>().linear_velocity = new Vector2(sprite.Scale.x * BULLET_VELOCITY, 0);
 		        node.GetNode<AudioStreamPlayer2D>("sound_shoot").Play();
 		        player.shoot_time = 0;
             }
@@ -166,9 +166,25 @@ namespace Systems
 
     static class BulletBehavior
     {
-        public static void Execute()
+        public static void Execute(Comp.Global global_ro)
         {
+            var bullets = Ghi.Environment.List.Where(e => e.ComponentRO<Comp.ActorDef>().def == ActorDefs.Bullet).ToArray();
 
+            List<Ghi.Entity> bulletsLive = new List<Ghi.Entity>();
+
+            // Move all the bulletses
+            foreach (var bulletEntity in bullets)
+            {
+                var bulletBody = bulletEntity.Component<KinematicBody2D>();
+
+                var result = bulletBody.MoveAndCollide(bulletEntity.Component<Comp.Projectile>().linear_velocity * global_ro.delta);
+
+                if (result != null)
+                {
+                    bulletBody.GetNode<AnimationPlayer>("anim").Play("shutdown");
+                    Ghi.Environment.Remove(bulletEntity);
+                }
+            }
         }
     }
 

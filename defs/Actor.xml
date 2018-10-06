@@ -38,7 +38,7 @@
     <components>
       <li>ActorDef</li>
       <li>Projectile</li>
-      <li>GodotRigidBody</li>
+      <li>GodotKinematicBody</li>
     </components>
   </EntityDef>
   <ActorDef defName="Bullet">

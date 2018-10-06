@@ -36,9 +36,13 @@
 
   <SystemDef defName="BulletBehavior">
     <type>Systems.BulletBehavior</type>
-    <iterate>
+    <full>
+      <ActorDef>ReadOnly</ActorDef>
       <Monster>ReadWrite</Monster>
-    </iterate>
+      <Projectile>ReadWrite</Projectile>
+      <GodotKinematicBody>ReadWrite</GodotKinematicBody>
+      <GodotArea>ReadWrite</GodotArea>
+    </full>
     <singleton>
       <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
     </singleton>

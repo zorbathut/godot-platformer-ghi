@@ -18,4 +18,5 @@ public static class ActorDefs
     static ActorDefs() { Def.StaticReferences.Initialized(); }
 
     public static ActorDef Bullet;
+    public static ActorDef Monster;
 }

@@ -40,7 +40,7 @@ namespace Comp
 
     class Projectile
     {
-
+        public Vector2 linear_velocity;
     }
 
     class GodotSceneSingleton
