@@ -74,6 +74,11 @@ spawn={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Terrain"
+2d_physics/layer_2="Actor"
+
 [physics]
 
 2d/default_gravity=700
