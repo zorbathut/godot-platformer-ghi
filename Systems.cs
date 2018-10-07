@@ -132,7 +132,7 @@ namespace Systems
 
         const float WALK_SPEED = 70;
 
-        public static void Execute(Comp.Monster monster, Godot.KinematicBody2D body, Comp.Global global_ro)
+        public static void Execute(Ghi.Entity entity, Comp.Monster monster, Godot.KinematicBody2D body, Comp.Global global_ro)
         {
             var new_anim = "idle";
 
@@ -154,6 +154,7 @@ namespace Systems
 	        else
             {
                 new_anim = "explode";
+                Ghi.Environment.Remove(entity);
             }
 
 	        if (monster.anim != new_anim)
@@ -182,7 +183,13 @@ namespace Systems
                 if (result != null)
                 {
                     bulletBody.GetNode<AnimationPlayer>("anim").Play("shutdown");
-                    Ghi.Environment.Remove(bulletEntity);
+                    Spawn.Detach(bulletEntity);
+
+                    var impactor = Spawn.Lookup(result.Collider as Godot.Node);
+                    if (impactor != null && impactor.ComponentRO<Comp.ActorDef>().def == ActorDefs.Monster)
+                    {
+                        impactor.Component<Comp.Monster>().state = Comp.Monster.State.Killed;
+                    }
                 }
             }
         }
@@ -192,8 +199,8 @@ namespace Systems
     {
         public static void Execute()
         {
-            var players = Ghi.Environment.List.Where(e => e.ComponentRO<Comp.Player>() != null).ToArray();
-            var coins = Ghi.Environment.List.Where(e => e.ComponentRO<Comp.Collectible>() != null).ToArray();
+            var players = Ghi.Environment.List.Where(e => e.HasComponent<Comp.Player>()).ToArray();
+            var coins = Ghi.Environment.List.Where(e => e.HasComponent<Comp.Collectible>()).ToArray();
                 
             foreach (var playerentity in players)
             {
@@ -206,7 +213,7 @@ namespace Systems
                     if (playercollide.Collide(coincollide))
                     {
                         coinentity.ComponentRO<Area2D>().GetNode<AnimationPlayer>("anim").Play("taken");
-                        Ghi.Environment.Remove(coinentity);
+                        Spawn.Detach(coinentity);
                     }
                 }
             }
