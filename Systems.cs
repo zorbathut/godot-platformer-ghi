@@ -176,20 +176,30 @@ namespace Systems
             // Move all the bulletses
             foreach (var bulletEntity in bullets)
             {
-                var bulletBody = bulletEntity.Component<KinematicBody2D>();
+                var bulletBody = bulletEntity.Component<Node2D>();
 
-                var result = bulletBody.MoveAndCollide(bulletEntity.Component<Comp.Projectile>().linear_velocity * global_ro.delta);
+                var posNow = bulletBody.GlobalPosition;
+                var posNext = bulletBody.GlobalPosition + bulletEntity.Component<Comp.Projectile>().linear_velocity * global_ro.delta;
 
-                if (result != null)
+                var space = Physics2DServer.SpaceGetDirectState(bulletBody.GetWorld2d().Space);
+                var result = space.IntersectRayParsed(posNow, posNext, null, collisionLayer: 3);
+
+                if (result.collider != null)
                 {
                     bulletBody.GetNode<AnimationPlayer>("anim").Play("shutdown");
                     Spawn.Detach(bulletEntity);
 
-                    var impactor = Spawn.Lookup(result.Collider as Godot.Node);
+                    var impactor = Spawn.Lookup(result.collider as Node2D);
                     if (impactor != null && impactor.ComponentRO<Comp.ActorDef>().def == ActorDefs.Monster)
                     {
                         impactor.Component<Comp.Monster>().state = Comp.Monster.State.Killed;
                     }
+
+                    bulletBody.GlobalPosition = result.position;
+                }
+                else
+                {
+                    bulletBody.GlobalPosition = posNext;
                 }
             }
         }

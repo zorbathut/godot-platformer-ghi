@@ -1,4 +1,5 @@
 ﻿using Godot;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -59,8 +60,32 @@ static class Util
         return holder;
     }
 
+    public static object TryGetValue(this Godot.Collections.Dictionary dict, object key)
+    {
+        dict.TryGetValue(key, out object holder);
+        return holder;
+    }
+
     public static bool Collide(this CollisionShape2D lhs, CollisionShape2D rhs)
     {
         return lhs.GetShape().Collide(lhs.GlobalTransform, rhs.GetShape(), rhs.GlobalTransform);
+    }
+
+    public struct IntersectRayResult
+    {
+        public Vector2 position;
+        public Vector2 normal;
+        public Object collider;
+    }
+
+    public static IntersectRayResult IntersectRayParsed(this Physics2DDirectSpaceState space, Vector2 from, Vector2 to, Godot.Collections.Array exclude = null, int collisionLayer = int.MaxValue, bool collideWithBodies = true, bool collideWithAreas = false)
+    {
+        Godot.Collections.Dictionary dict = space.IntersectRay(from, to, exclude, collisionLayer, collideWithBodies, collideWithAreas);
+
+        IntersectRayResult result = new IntersectRayResult();
+        result.position = (dict.TryGetValue("position") as Vector2?).GetValueOrDefault();
+        result.normal = (dict.TryGetValue("normal") as Vector2?).GetValueOrDefault();
+        result.collider = dict.TryGetValue("collider") as Object;
+        return result;
     }
 }

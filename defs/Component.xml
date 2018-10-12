@@ -32,6 +32,10 @@
     <type>Godot.Area2D</type>
   </ComponentDef>
 
+  <ComponentDef defName="GodotNode">
+    <type>Godot.Node2D</type>
+  </ComponentDef>
+  
   <ComponentDef defName="GodotPlatform">
     <type>Comp.Godot.Platform</type>
   </ComponentDef>

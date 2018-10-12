@@ -41,7 +41,7 @@
       <Monster>ReadWrite</Monster>
       <Projectile>ReadWrite</Projectile>
       <GodotKinematicBody>ReadWrite</GodotKinematicBody>
-      <GodotArea>ReadWrite</GodotArea>
+      <GodotNode>ReadWrite</GodotNode>
     </full>
     <singleton>
       <GodotSceneSingleton>ReadWrite</GodotSceneSingleton>
